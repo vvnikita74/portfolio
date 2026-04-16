@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио - Данил Петров</title>
+  <link rel="icon" href="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%90%D1%81%D0%BF%D0%B8%D0%B4%D0%BD%D0%BE-%D1%81%D0%B8%D0%BD%D0%B8%D0%B8%CC%86.svg" type="image/svg+xml">
+  <style>
+    @font-face {
+      font-family: "SuisseIntl";
+      src: url("SST/%D0%A8%D1%80%D0%B8%D1%84%D1%82/SuisseIntl-Book.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "SuisseIntl";
+      src: url("SST/%D0%A8%D1%80%D0%B8%D1%84%D1%82/SuisseIntl-Regular.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --panel: #121a33;
+      --panel-2: #1a2444;
+      --text: #f5f7ff;
+      --muted: #b4bdd9;
+      --ok: #2ec27e;
+      --warn: #f6c44f;
+      --bad: #ff6b6b;
+      --info: #7aa2ff;
+      --border: #2a3768;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "SuisseIntl", system-ui, sans-serif;
+      background: linear-gradient(180deg, #0b1020 0%, #111832 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(72.5rem, 92vw);
+      margin: 0 auto 2.125rem;
+    }
+
+    .hero {
+      padding: 2.75rem 0 1.5rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 0.625rem;
+      font-size: clamp(1.75rem, 4vw, 2.625rem);
+      line-height: 1.1;
+    }
+
+    .hero-lede {
+      margin: 0 0 1rem;
+      max-width: 38rem;
+      font-size: clamp(0.9375rem, 1.75vw, 1.0625rem);
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      margin-top: 0;
+    }
+
+    .chip {
+      padding: 0.4375rem 0.625rem;
+      border: 1px solid var(--border);
+      border-radius: 0.625rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .section-title {
+      margin: 0.5rem 0 0.875rem;
+      font-size: 1.375rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.875rem;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      padding: 0.875rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .preview {
+      border: 1px solid var(--border);
+      border-radius: 0.625rem;
+      min-height: 7.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #dbe4ff;
+      overflow: hidden;
+    }
+
+    .preview.web { background: linear-gradient(135deg, #2846a6, #2f6dde); }
+    .preview.platform { background: linear-gradient(135deg, #2d3d8e, #4f58c2); }
+    .preview.identity { background: linear-gradient(135deg, #1d6a82, #2ca4bd); }
+
+    .preview-site {
+      padding: 1.125rem 0.875rem;
+      font-weight: normal;
+      letter-spacing: normal;
+      text-transform: none;
+      background: linear-gradient(145deg, rgba(26, 36, 68, 0.95), rgba(12, 18, 40, 0.98));
+    }
+
+    .preview-site img {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 1rem;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.625rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .preview-site-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .preview-site-row img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    .identity-row {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem;
+    }
+
+    .identity-tile {
+      width: 5.375rem;
+      height: 4.125rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .identity-tile.dark { background: #0a0f20; }
+    .identity-tile.light { background: #eef2ff; }
+
+    .identity-tile img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .identity-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      align-items: center;
+    }
+
+    .sst-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .sst-gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 40rem) {
+      .sst-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .card-head {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 62.4375rem;
+      font-size: 0.75rem;
+      padding: 0.1875rem 0.5625rem;
+      border: 1px solid transparent;
+    }
+
+    .ok {
+      color: var(--ok);
+      border-color: rgba(46, 194, 126, 0.35);
+      background: rgba(46, 194, 126, 0.12);
+    }
+
+    .warn {
+      color: var(--warn);
+      border-color: rgba(246, 196, 79, 0.35);
+      background: rgba(246, 196, 79, 0.12);
+    }
+
+    .bad {
+      color: var(--bad);
+      border-color: rgba(255, 107, 107, 0.35);
+      background: rgba(255, 107, 107, 0.12);
+    }
+
+    .info {
+      color: var(--info);
+      border-color: rgba(122, 162, 255, 0.35);
+      background: rgba(122, 162, 255, 0.12);
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 1.125rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    .line {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .line strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .project-card a {
+      color: var(--info);
+      text-decoration: none;
+      font-size: 0.875rem;
+      word-break: break-all;
+    }
+
+    .project-card a.figma-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: flex-start;
+      margin-top: 0.25rem;
+      padding: 0.5625rem 0.875rem;
+      border-radius: 0.625rem;
+      border: 1px solid rgba(122, 162, 255, 0.5);
+      background: rgba(122, 162, 255, 0.14);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      word-break: normal;
+    }
+
+    .project-card a.figma-cta:hover {
+      background: rgba(122, 162, 255, 0.24);
+      border-color: rgba(122, 162, 255, 0.8);
+    }
+
+    .project-card a.figma-cta::after {
+      content: '↗';
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--info);
+      line-height: 1;
+    }
+
+    .art-direction {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .art-direction .section-title {
+      margin-top: 0;
+    }
+
+    .art-direction-intro {
+      margin-bottom: 1.375rem;
+      padding: 1.125rem 1.25rem;
+      border-radius: 0.875rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(122, 162, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(12, 18, 40, 0.35) 100%);
+    }
+
+    .art-direction-intro p {
+      margin: 0 0 0.75rem;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .art-direction-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .art-direction-intro .art-direction-lead {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .art-direction-intro strong {
+      color: var(--info);
+      font-weight: 600;
+    }
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.875rem;
+    }
+
+    .art-card {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      overflow: hidden;
+    }
+
+    .art-card > img {
+      width: 100%;
+      height: 12.5rem;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .art-card-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .art-card-visual img {
+      width: 100%;
+      height: 12.5rem;
+      object-fit: cover;
+      display: block;
+    }
+
+    .art-card-visual img:not(:first-child) {
+      border-left: 1px solid var(--border);
+    }
+
+    .art-card-visual--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 40rem) {
+      .art-card-visual--3 {
+        grid-template-columns: 1fr;
+      }
+
+      .art-card-visual--3 img:not(:first-child) {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+    }
+
+    .art-body {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .art-body h3 {
+      margin: 0;
+      font-size: 1.0625rem;
+    }
+
+    .art-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 60rem) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .art-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 40rem) {
+      .art-grid { grid-template-columns: 1fr; }
+    }
+
+    .cta-bar {
+      margin-top: 2.5rem;
+      padding: 1rem 1.125rem;
+      border-radius: 0.875rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.025);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.875rem 1.25rem;
+    }
+
+    .cta-bar > p {
+      margin: 0;
+      font-size: 0.9375rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .cta-bar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.625rem;
+      border: 1px solid rgba(122, 162, 255, 0.45);
+      background: rgba(122, 162, 255, 0.1);
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .cta-link:hover {
+      background: rgba(122, 162, 255, 0.2);
+      border-color: rgba(122, 162, 255, 0.75);
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>Портфолио веб-проектов</h1>
+      <p class="hero-lede">Веб-дизайн, айдентика и UX/UI: продуктовые интерфейсы, лендинги и коммуникации — от брифа до макетов и внедрения.</p>
+      <div class="contacts">
+        <span class="chip">Email: petrov001001@bk.ru</span>
+        <span class="chip">Телефон: +7 912 405 4384</span>
+        <span class="chip">Telegram: @Jiggyjackass</span>
+      </div>
+    </section>
+
+    <h2 class="section-title">Проекты и кейсы</h2>
+    <section class="projects-grid">
+      <article class="project-card">
+        <div class="preview identity">
+          <div class="identity-stack">
+            <div class="identity-row">
+              <div class="identity-tile light"><img loading="lazy" src="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%90%D1%81%D0%BF%D0%B8%D0%B4%D0%BD%D0%BE-%D1%81%D0%B8%D0%BD%D0%B8%D0%B8%CC%86.svg" alt="SST логотип синий"></div>
+              <div class="identity-tile dark"><img loading="lazy" src="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86.svg" alt="SST логотип белый"></div>
+              <div class="identity-tile light"><img loading="lazy" src="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%A7%D0%B5%CC%88%D1%80%D0%BD%D1%8B%D0%B8%CC%86.svg" alt="SST логотип черный"></div>
+            </div>
+            <div class="identity-row">
+              <div class="identity-tile light"><img loading="lazy" src="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%A4%D0%B8%D1%80%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B8%CC%86%20%D0%B7%D0%BD%D0%B0%D0%BA/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%90%D1%81%D0%BF%D0%B8%D0%B4%D0%BD%D0%BE-%D1%81%D0%B8%D0%BD%D0%B8%D0%B8%CC%86.svg" alt="SST фирменный знак, синий"></div>
+              <div class="identity-tile dark"><img loading="lazy" src="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%A4%D0%B8%D1%80%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B8%CC%86%20%D0%B7%D0%BD%D0%B0%D0%BA/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%91%D0%B5%D0%BB%D1%8B%D0%B8%CC%86.svg" alt="SST фирменный знак, белый"></div>
+              <div class="identity-tile light"><img loading="lazy" src="SST/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF/%D0%A4%D0%B8%D1%80%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B8%CC%86%20%D0%B7%D0%BD%D0%B0%D0%BA/SVG/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF%20%D0%A7%D0%B5%CC%88%D1%80%D0%BD%D1%8B%D0%B8%CC%86.svg" alt="SST фирменный знак, черный"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-head"><span class="badge info">Identity</span><span class="badge info">Branding</span><span class="badge info">UX/UI</span></div>
+        <h3>SST · ScanScape Technologies</h3>
+        <p class="meta">Айдентика, носители, фоны, соцсети, визитка и UX/UI сайта</p>
+        <p class="line"><strong>Задача:</strong> собрать цельную бренд-систему и продумать UX/UI продукта ScanScape Technologies.</p>
+        <p class="line"><strong>Что сделали:</strong> разработали логотип и знак, набор исходников, оформление соцсетей, макет сайта, интерактивный прототип интерфейса в Figma и реализацию сайта.</p>
+        <p class="line"><strong>Результат:</strong> готовый бренд-пакет, макеты и материалы для digital, плюс UX/UI-прототип для развития продукта.</p>
+        <div class="sst-gallery">
+          <img loading="lazy" src="SST/%D0%9E%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20ScanScape%20Technologies/%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80.webp" alt="Аватар ScanScape">
+          <img loading="lazy" src="SST/%D0%9E%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20ScanScape%20Technologies/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0%20%D0%92%D0%9A.webp" alt="Обложка ВК ScanScape">
+          <img loading="lazy" src="SST/%D0%9E%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20ScanScape%20Technologies/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0%20%D0%92%D0%9A%20%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F.webp" alt="Обложка ВК, мобильная">
+          <img loading="lazy" src="SST/%D0%A4%D0%BE%D0%BD%D1%8B/%D0%9A%D0%B2%D0%B0%D0%B4%D1%80%D0%B0%D1%82/%D0%A4%D0%BE%D0%BD%202.webp" alt="Фирменный фон, квадрат">
+        </div>
+        <a class="figma-cta" href="https://www.figma.com/proto/zIyofEsYgRirMk3hLTqxG9/ScanScape?page-id=64%3A68&type=design&node-id=164-2&viewport=-221%2C458%2C0.49&t=QI5lCouwzwGjZ1MU-1&scaling=min-zoom&starting-point-node-id=164%3A2&mode=design" target="_blank" rel="noopener" aria-label="Открыть макет и прототип ScanScape в Figma">Макет и прототип в Figma</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=hvalawifi.ru&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">Identity + Web</span></div>
+        <h3>HVALA</h3>
+        <p class="meta">Айдентика, гайдлайн, адаптивный сайт, рекламные материалы</p>
+        <p class="line"><strong>Задача:</strong> сформировать целостный визуальный язык бренда.</p>
+        <p class="line"><strong>Что сделали:</strong> разработали систему стиля и digital-носители.</p>
+        <p class="line"><strong>Результат:</strong> единый набор бренд-материалов для коммуникации.</p>
+        <a href="https://hvalawifi.ru/" target="_blank" rel="noopener">https://hvalawifi.ru/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=aiacade.me&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">E-commerce focus</span><span class="badge info">Web</span></div>
+        <h3>AI Academy</h3>
+        <p class="meta">2025 · Лендинг и оформление заказа</p>
+        <p class="line"><strong>Задача:</strong> запустить продажи курсов через web.</p>
+        <p class="line"><strong>Что сделали:</strong> сделали лендинг и воронку оформления заказа.</p>
+        <p class="line"><strong>Результат:</strong> сайт запущен и принимает заявки.</p>
+        <a href="https://aiacade.me/" target="_blank" rel="noopener">https://aiacade.me/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=vremyapervih.ru&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">E-commerce close</span><span class="badge info">Web + CRM</span></div>
+        <h3>Время первых</h3>
+        <p class="meta">2024-2025 · Лендинг + CRM + ЛК родителя</p>
+        <p class="line"><strong>Задача:</strong> объединить публичный сайт и внутренние процессы обучения.</p>
+        <p class="line"><strong>Что сделали:</strong> разработали лендинг, CRM, опрос и личный кабинет.</p>
+        <p class="line"><strong>Результат:</strong> единая рабочая система для проекта.</p>
+        <a href="https://vremyapervih.ru/" target="_blank" rel="noopener">https://vremyapervih.ru/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=mediatower.me&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">E-commerce close</span><span class="badge info">Web + CMS</span></div>
+        <h3>Mediatower</h3>
+        <p class="meta">2023-2024 · Лендинг + CMS Strapi + рефактор на Next.js</p>
+        <p class="line"><strong>Задача:</strong> запустить сайт с быстрым обновлением контента.</p>
+        <p class="line"><strong>Что сделали:</strong> интегрировали CMS и обновили фронтенд на Next.js.</p>
+        <p class="line"><strong>Результат:</strong> стабильный управляемый сайт.</p>
+        <a href="https://mediatower.me/" target="_blank" rel="noopener">https://mediatower.me/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=my.hustleapp.xyz&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">Mobile UX</span><span class="badge info">Mobile Web</span></div>
+        <h3>HustleApp</h3>
+        <p class="meta">2025 · Мобильная web-версия</p>
+        <p class="line"><strong>Задача:</strong> собрать mobile-first версию приложения для пользователей и сторов.</p>
+        <p class="line"><strong>Что сделали:</strong> реализовали интерфейсы и подготовили release-материалы.</p>
+        <p class="line"><strong>Результат:</strong> рабочая мобильная версия в сети.</p>
+        <a href="https://my.hustleapp.xyz/" target="_blank" rel="noopener">https://my.hustleapp.xyz/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site preview-site-row">
+          <img src="https://www.google.com/s2/favicons?domain=reinexpo.ru&amp;sz=128" alt="" width="56" height="56" loading="lazy" referrerpolicy="no-referrer">
+          <img src="https://www.google.com/s2/favicons?domain=reinspace.ru&amp;sz=128" alt="" width="56" height="56" loading="lazy" referrerpolicy="no-referrer">
+          <img src="https://www.google.com/s2/favicons?domain=reinrent.ru&amp;sz=128" alt="" width="56" height="56" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">Web</span><span class="badge info">3 сайта</span></div>
+        <h3>REIN Expo / REIN Space / REIN Rent</h3>
+        <p class="meta">2024 · Линейка лендингов</p>
+        <p class="line"><strong>Задача:</strong> собрать группу сайтов в единой стилистике бренда.</p>
+        <p class="line"><strong>Что сделали:</strong> разработали и оптимизировали 3 адаптивных лендинга.</p>
+        <p class="line"><strong>Результат:</strong> вся линейка проектов опубликована и работает.</p>
+        <a href="https://reinexpo.ru/" target="_blank" rel="noopener">https://reinexpo.ru/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=xn--k1am1c.xn--p1ai&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">Web</span></div>
+        <h3>ЛЁС.РФ</h3>
+        <p class="meta">2023-2024 · Лендинг по продаже домов</p>
+        <p class="line"><strong>Задача:</strong> создать продающий лендинг для компании по продаже домов.</p>
+        <p class="line"><strong>Что сделали:</strong> спроектировали и сверстали адаптивный сайт.</p>
+        <p class="line"><strong>Результат:</strong> рабочий проект в продакшене.</p>
+        <a href="https://xn--k1am1c.xn--p1ai/" target="_blank" rel="noopener">https://xn--k1am1c.xn--p1ai/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=danilin.pro&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">Personal</span><span class="badge info">Web</span></div>
+        <h3>Danilin.pro</h3>
+        <p class="meta">2023-2024 · Персональный лендинг</p>
+        <p class="line"><strong>Задача:</strong> собрать презентационный сайт с акцентом на личный бренд.</p>
+        <p class="line"><strong>Что сделали:</strong> разработали адаптивную структуру и выкатили в прод.</p>
+        <p class="line"><strong>Результат:</strong> работающий сайт в публичном доступе.</p>
+        <a href="https://danilin.pro/" target="_blank" rel="noopener">https://danilin.pro/</a>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <div class="white-bg">
+            <img src="./spo-ural-logo.webp" alt="" width="52" height="52" loading="lazy" referrerpolicy="no-referrer">
+          </div>
+        </div>
+        <div class="card-head"><span class="badge info">App</span><span class="badge info">React + Django</span></div>
+        <h3>Приложение для ООО «СПО-Урал»</h3>
+        <p class="meta">Автоматизация отчетности и 3D-сканов</p>
+        <p class="line"><strong>Задача:</strong> убрать ручные операции при подготовке документов.</p>
+        <p class="line"><strong>Что сделали:</strong> внедрили генерацию Excel/PDF и Potree viewer.</p>
+        <p class="line"><strong>Результат:</strong> ускорение процесса подготовки и выдачи отчетов.</p>
+      </article>
+
+      <article class="project-card">
+        <div class="preview preview-site">
+          <img src="https://www.google.com/s2/favicons?domain=finopolis.ru&amp;sz=128" alt="" width="72" height="72" loading="lazy" referrerpolicy="no-referrer">
+        </div>
+        <div class="card-head"><span class="badge info">Interactive</span></div>
+        <h3>Шар с предсказаниями (Finopolis)</h3>
+        <p class="meta">Ивентовый промо-интерактив</p>
+        <p class="line"><strong>Задача:</strong> сделать визуальный интерактив для форума.</p>
+        <p class="line"><strong>Что сделали:</strong> разработали анимации и интерактивную логику.</p>
+        <p class="line"><strong>Результат:</strong> готовый промо-инструмент для мероприятия.</p>
+      </article>
+
+    </section>
+
+    <section class="art-direction">
+      <h2 class="section-title">Арт-дирекшен</h2>
+      <div class="art-direction-intro">
+        <p class="art-direction-lead"><strong>Арт-дирекшен</strong> — надстройка над отдельными макетами: единая визуальная линия, согласованные носители и взгляд «со стороны бренда», когда коммуникаций много или вовлечено несколько исполнителей.</p>
+        <p>В базовую стоимость веб- и продуктового дизайна не входит: подключается отдельной опцией и предполагает привлечение профильного специалиста под задачу — чтобы заранее зафиксировать референсы, тональность и критерии качества, а не собирать их по ходу сдачи.</p>
+        <p>Имеет смысл заказывать там, где важны цельность образа, скорость согласований и предсказуемый визуальный результат без типичного разъезда стиля между экранами, соцсетями и печатью.</p>
+      </div>
+      <div class="art-grid">
+        <article class="art-card">
+          <div class="art-card-visual art-card-visual--3">
+            <img loading="lazy" src="art-direction/art%20of%20music/image-361bd146-8c6c-4ca4-9330-54e9df2f1d31.webp" alt="Art of Music — айдентика">
+            <img loading="lazy" src="art-direction/art%20of%20music/image-7641df03-c7f5-435a-9982-7cf1bef0d0e9.webp" alt="Art of Music — айдентика">
+            <img loading="lazy" src="art-direction/art%20of%20music/image-a61af894-9468-416c-b4f7-3cda099ff0ae.webp" alt="Art of Music — айдентика">
+          </div>
+          <div class="art-body">
+            <h3>Art of Music</h3>
+            <div class="card-head"><span class="badge info">Айдентика</span></div>
+            <p>Фонд Art of Music занимается продвижением классической музыки в бедных странах Африки, таких как Кения. Фонд помогает детям из трущоб получить образование и социализироваться в обществе с помощью классической музыки.</p>
+            <p>В рамках проекта разработана айдентика, передающая ценности фонда и направленная на привлечение внимания европейских обществ к начинающим деятелям искусства.</p>
+          </div>
+        </article>
+
+        <article class="art-card">
+          <div class="art-card-visual">
+            <img loading="lazy" src="art-direction/ghetto%20classics/image-3f4440ce-8c89-402f-a715-9be900a42713.webp" alt="Ghetto Classics — арт-продакшн">
+            <img loading="lazy" src="art-direction/ghetto%20classics/image-ddd2086d-73ff-4366-bb17-a868ed9717ca.webp" alt="Ghetto Classics — арт-продакшн">
+          </div>
+          <div class="art-body">
+            <h3>Ghetto Classics</h3>
+            <div class="card-head"><span class="badge info">Айдентика</span><span class="badge info">Арт-продакшн</span></div>
+            <p>Ghetto Classics — это флагманская программа фонда Art of Music. Она представляет собой общественную программу, охватывающую более 500 детей в Корогчо — одной из крупнейших трущоб Кении. Там проживает около 300&nbsp;000 городских бедняков. Ещё программа работает с более чем 1000 детьми в 9 районах-спутниках вокруг Найроби, одним районом в Киамбу и четырьмя в Момбасе.</p>
+            <p>При разработке айдентики за основу взят принцип: показать Европе эстетику гетто и трущоб как ценность, которой гордятся дети. Проект реализован совместно с командой Althafen Foundation.</p>
+            <p>Цель визуальной концепции — продемонстрировать уникальность и красоту эстетики, подчеркнуть самобытность и сделать её понятной и привлекательной для европейского зрителя. Дизайн-концепция прорабатывалась так, чтобы передать особенности и нюансы культуры.</p>
+          </div>
+        </article>
+
+        <article class="art-card">
+          <img loading="lazy" src="art-direction/%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%20%D0%B3%D0%BE%20x%20%D1%82%D0%BE%D0%BF%D0%BB%D0%B5%D1%81/image-559aed1d-b400-4392-8294-616d49aef407.webp" alt="Яндекс Go × Топлес — коммуникационный дизайн, серия постов">
+          <div class="art-body">
+            <h3>Яндекс Go × Топлес</h3>
+            <div class="card-head"><span class="badge info">Коммуникационный дизайн</span></div>
+            <p>В рамках коллаборации Яндекс Go с проектом Ян Топлес подготовлена серия постов для социальных сетей: носители поддерживают коммуникацию с аудиторией и знакомят пользователей с фактами об услугах такси в связке с материалами Антологии технологий Яндекс Такси.</p>
+            <p>Изначально в плане был один пост; после выхода (свыше 100&nbsp;000 просмотров, более 812 реакций) задача расширена на продолжение серии для продвижения антологии.</p>
+          </div>
+        </article>
+
+        <article class="art-card">
+          <div class="art-card-visual art-card-visual--3">
+            <img loading="lazy" src="art-direction/%D0%BF%D0%B0%D0%BA%D0%B5%D1%82/image-21c634cd-e998-46ab-8b48-6d521244083b.webp" alt="Пакет — коммуникационный и моушн-дизайн">
+            <img loading="lazy" src="art-direction/%D0%BF%D0%B0%D0%BA%D0%B5%D1%82/image-4efbc12f-b9d6-4ecd-b0ae-163cc9bece31.webp" alt="Пакет — коммуникационный и моушн-дизайн">
+            <img loading="lazy" src="art-direction/%D0%BF%D0%B0%D0%BA%D0%B5%D1%82/image-deb8aa3e-1525-4923-bfa1-86498b0fc988.webp" alt="Пакет — коммуникационный и моушн-дизайн">
+          </div>
+          <div class="art-body">
+            <h3>Пакет</h3>
+            <div class="card-head"><span class="badge info">Коммуникационный дизайн</span><span class="badge info">Моушн-дизайн</span></div>
+            <p>«Пакет» — сервис, который позволяет получать больше кешбэка баллами «Х5 Клуба» за покупки в «Пятёрочке» и «Перекрёстке».</p>
+            <p>Реализовано комплексное обновление и ведение социальных сетей бренда на основе принципов визуальной коммуникации: оформление постов, дизайн сообществ, email-рассылки, развлекательные анимации и генерация новых идей для коммуникации.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-bar" aria-label="Связаться по проекту">
+      <p>Коротко опишите задачу — ответ по возможности в тот же день.</p>
+      <div class="cta-bar-actions">
+        <a class="cta-link" href="https://t.me/Jiggyjackass" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="cta-link" href="mailto:petrov001001@bk.ru">Отправить на почту</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
